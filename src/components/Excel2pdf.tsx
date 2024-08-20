@@ -31,7 +31,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ExcelDocument = ({ rows }) => (
+// Define the type for the rows prop
+type ExcelDocumentProps = {
+  rows: string[][];
+};
+
+const ExcelDocument: React.FC<ExcelDocumentProps> = ({ rows }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.table}>
@@ -50,17 +55,17 @@ const ExcelDocument = ({ rows }) => (
 );
 
 const Excel2PDF = () => {
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState<string[][]>([]); // Explicitly type the state
 
-  const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const workbook = XLSX.read(e.target.result, { type: 'binary' });
+        const workbook = XLSX.read(e.target.result as string, { type: 'binary' });
         const worksheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[worksheetName];
-        const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        const data: string[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         setRows(data);
       };
       reader.readAsBinaryString(file);
@@ -94,3 +99,4 @@ const Excel2PDF = () => {
 };
 
 export default Excel2PDF;
+
