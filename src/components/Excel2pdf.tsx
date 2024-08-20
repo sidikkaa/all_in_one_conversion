@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
   tableCell: {
     margin: 5, // Unified margin for top and bottom
   },
-  image: {
-    width: '100%', // Adjust the width as needed
-    marginBottom: 20, // Add margin to separate the image from the button
+  imageContainer: {
+    width: '100%', // Container width
+    marginBottom: 20, // Margin below the image
   },
 });
 
@@ -77,7 +77,9 @@ const Excel2PDF = () => {
     <section className="py-12 bg-gray-100">
       <div className="max-w-4xl mx-auto">
         {/* Using Next.js Image component */}
-        <Image src={excelToPdfImage} alt="Excel to PDF" className={styles.image} /> 
+        <div style={styles.imageContainer}>
+          <Image src={excelToPdfImage} alt="Excel to PDF" layout="responsive" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <button className="conversion-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
             Convert Excel to PDF
@@ -99,6 +101,9 @@ const Excel2PDF = () => {
     </section>
   );
 };
+
+export default Excel2PDF;
+
 
 export default Excel2PDF;
 
