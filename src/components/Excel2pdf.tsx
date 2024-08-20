@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
 import * as XLSX from 'xlsx';
-import excelToPdfImage from './excelToPdfImage.png';
+import Image from 'next/image'; // Importing Next.js Image component if using Next.js
+import excelToPdfImage from './excelToPdfImage.png'; // Import the image
 
 const styles = StyleSheet.create({
   page: {
@@ -75,7 +76,8 @@ const Excel2PDF = () => {
   return (
     <section className="py-12 bg-gray-100">
       <div className="max-w-4xl mx-auto">
-        <img src={excelToPdfImage} alt="Excel to PDF" className={styles.image} /> {/* Image */}
+        {/* Using Next.js Image component */}
+        <Image src={excelToPdfImage} alt="Excel to PDF" className={styles.image} /> 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <button className="conversion-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
             Convert Excel to PDF
