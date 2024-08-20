@@ -62,7 +62,7 @@ const Excel2PDF = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const workbook = XLSX.read(e.target.result as string, { type: 'binary' });
+        const workbook = XLSX.read(e?.target?.result as string, { type: 'binary' });
         const worksheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[worksheetName];
         const data: string[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
@@ -99,4 +99,5 @@ const Excel2PDF = () => {
 };
 
 export default Excel2PDF;
+
 
