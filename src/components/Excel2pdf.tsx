@@ -10,26 +10,20 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   table: {
-    display: 'table',
-    width: 'auto',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRightWidth: 0,
-    borderBottomWidth: 0,
+    flexDirection: 'column', // Simulates a table by arranging rows in a column
   },
   tableRow: {
-    flexDirection: 'row'
+    flexDirection: 'row', // Arranges columns in a row
   },
   tableCol: {
-    width: '25%',
+    flex: 1, // Distributes columns evenly
     borderStyle: 'solid',
     borderWidth: 1,
     borderLeftWidth: 0,
     borderTopWidth: 0,
   },
   tableCell: {
-    marginTop: 5,
-    marginBottom: 5
+    margin: 5, // Unified margin for top and bottom
   },
   image: {
     width: '100%', // Adjust the width as needed
